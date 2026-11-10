@@ -1,0 +1,21 @@
+# couleurs de l'Université Bourgogne Europe : bordeaux + vert, sur fond crème
+[theme]
+primaryColor = "#8a1538"              # boutons, barres de progression, sélection
+backgroundColor = "#fbf8f3"           # fond de la page
+secondaryBackgroundColor = "#f2ebe0"  # champs de saisie
+textColor = "#2d2326"
+linkColor = "#8a1538"
+borderColor = "#e3d8c8"               # bordures des cartes et des champs
+baseRadius = "0.75rem"                # coins arrondis partout
+showWidgetBorder = true
+chartCategoricalColors = ["#8a1538", "#7aa33a"]  # couleurs des graphiques
+
+
+# barre de gauche bordeaux foncé avec texte clair
+[theme.sidebar]
+backgroundColor = "#6d1030"
+secondaryBackgroundColor = "#83203f"  # page sélectionnée dans le menu
+textColor = "#fbf3ea"
+primaryColor = "#b6d77a"
+linkColor = "#b6d77a"
+borderColor = "#9c4060"

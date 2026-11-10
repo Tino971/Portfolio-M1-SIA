@@ -1,0 +1,5 @@
+messages.csv
+__pycache__/
+.venv/
+Thumbs.db
+desktop.ini
