@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:wght@600&display=swap');
+
+.stApp {
+    background-image: radial-gradient(rgba(138, 21, 56, 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+}
+
+h1, h2, h3, h4 {
+    font-family: 'Fraunces', Georgia, serif !important;
+}
+
+[data-testid="stMetricValue"] {
+    color: #8a1538;
+}
+
+[class*="st-key-carte"] {
+    background: #fffdf9;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+[class*="st-key-carte"]:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px -12px rgba(109, 16, 48, 0.35);
+}
+
+[class*="st-key-carte"] img {
+    border-radius: 8px;
+}
+
+[data-testid="stSidebar"] img {
+    border-radius: 50%;
+    aspect-ratio: 1;
+    object-fit: cover;
+}

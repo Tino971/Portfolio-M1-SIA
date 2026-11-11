@@ -1,30 +1,35 @@
 import streamlit as st
-from data import PROFIL  # tout le contenu du site vient de data.py
+from data import PROFIL
 
-# réglages de l'onglet du navigateur (titre + icône) et page en pleine largeur
 st.set_page_config(page_title=PROFIL["nom"], page_icon=":briefcase:", layout="wide")
 
-# les 4 pages du site, default=True -> celle qui s'ouvre en premier
+with open("style.css", encoding="utf-8") as f:
+    st.html(f"<style>{f.read()}</style>")
+
 pages = [
-    st.Page("pages/home.py", title="About me", icon=":material/person:", default=True),
-    st.Page("pages/projects.py", title="Projects", icon=":material/code:"),
-    st.Page("pages/skills.py", title="Skills", icon=":material/bar_chart:"),
-    st.Page("pages/contact.py", title="Contact", icon=":material/mail:"),
+    st.Page("pages/home.py", title="About me", default=True),
+    st.Page("pages/projects.py", title="Projects"),
+    st.Page("pages/skills.py", title="Skills"),
+    st.Page("pages/contact.py", title="Contact"),
 ]
-# position="hidden" cache le menu auto (sinon il se met tout en haut, avant la photo)
 nav = st.navigation(pages, position="hidden")
 
-# tout ce qui est dans ce bloc va dans la barre de gauche
+if "visites" not in st.session_state:
+    st.session_state.visites = 0
+    st.session_state.page = None
+if st.session_state.page != nav.title:
+    st.session_state.visites += 1
+    st.session_state.page = nav.title
+
 with st.sidebar:
     st.image("assets/photo.jpg", width=150)
-    st.markdown(f"### {PROFIL['nom']}")  # ### = petit titre en Markdown
-    st.caption(PROFIL["titre"])  # caption = texte petit et gris
+    st.markdown(f"### {PROFIL['nom']}")
+    st.caption(PROFIL["titre"])
     st.divider()
-    # on refait le menu à la main, sous la photo : un lien par page
     for page in pages:
         st.page_link(page)
     st.divider()
-    # liens vers mes profils, en Markdown : [texte](adresse)
     st.markdown(f"[GitHub]({PROFIL['github']}) · [LinkedIn]({PROFIL['linkedin']})")
+    st.caption(f"Pages visited: {st.session_state.visites}")
 
-nav.run()  # lance la page choisie
+nav.run()
