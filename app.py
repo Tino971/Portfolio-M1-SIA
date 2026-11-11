@@ -7,9 +7,9 @@ with open("style.css", encoding="utf-8") as f:
     st.html(f"<style>{f.read()}</style>")
 
 pages = [
-    st.Page("pages/home.py", title="About me", default=True),
-    st.Page("pages/projects.py", title="Projects"),
-    st.Page("pages/skills.py", title="Skills"),
+    st.Page("pages/home.py", title="À propos", default=True),
+    st.Page("pages/projects.py", title="Projets"),
+    st.Page("pages/skills.py", title="Compétences"),
     st.Page("pages/contact.py", title="Contact"),
 ]
 nav = st.navigation(pages, position="hidden")
@@ -30,6 +30,6 @@ with st.sidebar:
         st.page_link(page)
     st.divider()
     st.markdown(f"[GitHub]({PROFIL['github']}) · [LinkedIn]({PROFIL['linkedin']})")
-    st.caption(f"Pages visited: {st.session_state.visites}")
+    st.caption(f"Pages visitées :{st.session_state.visites}")
 
 nav.run()

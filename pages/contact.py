@@ -1,22 +1,22 @@
 import streamlit as st
 from data import PROFIL
-from outils import check, save
+from outils import verifier, enregistrer
 
 st.title("Contact")
-st.write(f"You can send me a message with this form, or write to me at "
+st.write(f"Vous pouvez m'envoyer un message avec ce formulaire, ou m'écrire à "
          f"[{PROFIL['email']}](mailto:{PROFIL['email']}).")
 
 with st.form("contact"):
-    name = st.text_input("Your name")
-    email = st.text_input("Your email")
-    message = st.text_area("Your message")
-    sent = st.form_submit_button("Send")
+    nom = st.text_input("Votre nom")
+    email = st.text_input("Votre email")
+    message = st.text_area("Votre message")
+    envoye = st.form_submit_button("Envoyer")
 
-if sent:
-    erreurs = check(name, email, message)
+if envoye:
+    erreurs = verifier(nom, email, message)
     if erreurs:
         for e in erreurs:
             st.error(e)
     else:
-        save(name, email, message)
-        st.success("Thanks, your message has been sent.")
+        enregistrer(nom, email, message)
+        st.success("Merci, votre message a bien été envoyé.")
